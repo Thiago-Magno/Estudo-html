@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomia HTML</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Exercícios HTML</h1>
+    </header>
+    <nav><a href wm-nav="./exercicios/teste.html">00 - teste</a>
+        |<a href wm-nav="./exercicios/temp.html">01 - temp</a>
+        |<a href wm-nav="./textoPuro.html">texto puro</a>
+    </nav>
+    <section id="conteudo">Conteúdo</section>
+     
+    <footer>
+        <br>
+        Curso web moderno
+    </footer>   
+    <script>
+        document.querySelectorAll('[wm-nav]').forEach(link =>{
+            const conteudo = document.getElementById('conteudo')
+
+            link.onclick = function (e) {
+                e.preventDefault()
+
+                fetch(link.getAttribute('wm-nav'))
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+    </script> 
+</body>
+
+</html>
